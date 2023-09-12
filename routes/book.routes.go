@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func RouteInit(app *fiber.App) {
+func BookRoutes(app *fiber.App) {
 	api := app.Group("/api")
 	book := api.Group("/books")
 

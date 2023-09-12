@@ -44,21 +44,12 @@ func CreateBook(c *fiber.Ctx) error {
 		})
 	}
 
-	return c.JSON(book)
+	return c.Status(fiber.StatusCreated).JSON(book)
 }
 
 func EditBook(c *fiber.Ctx) error {
 	id := c.Params("id")
 	book := models.Book{}
-
-	// models.DB.First(&book, id)
-	// if book.Id == 0 {
-	// 	return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
-	// 		"status":  "error",
-	// 		"message": "Book with Id " + id + " Not found",
-	// 		"data":    book,
-	// 	})
-	// }
 
 	if err := c.BodyParser(&book); err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
